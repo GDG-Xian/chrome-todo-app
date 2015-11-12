@@ -5,6 +5,10 @@ function taskCheckHanlder() {
   $todo.toggleClass('done', isChecked);
 }
 
+function clearDoneTasks() {
+  $('.todo-list li.done').remove();
+}
+
 function createTodo(text) {
   var todoHtml = '<li><input type="checkbox" />' + text + '</li>';
   $(todoHtml).appendTo('.todo-list');
@@ -20,4 +24,5 @@ function keyPressHandler(event) {
 $(function() {
   $('#todo-input').on('keypress', keyPressHandler);
   $(document).on('change', '.todo-list li :checkbox', taskCheckHanlder);
+  $('#action-clean-done').on('click', clearDoneTasks);
 });
