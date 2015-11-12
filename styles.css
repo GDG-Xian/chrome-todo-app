@@ -51,7 +51,7 @@ footer {
 
 .todo-list li.done {
   text-decoration: line-through;
-  color: #dddddd;
+  color: #888888;
 }
 
 .todo-list li:hover {
