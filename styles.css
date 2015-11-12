@@ -49,6 +49,11 @@ footer {
   padding: 5px;
 }
 
+.todo-list li.done {
+  text-decoration: line-through;
+  color: #dddddd;
+}
+
 .todo-list li:hover {
   background: #efefef;
 }

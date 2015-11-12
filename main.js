@@ -1,9 +1,13 @@
+function taskCheckHanlder() {
+  var isChecked = this.checked;
+  var $todo = $(this).parent();
+
+  $todo.toggleClass('done', isChecked);
+}
+
 function createTodo(text) {
-  var todo = document.createElement('li');
-  todo.innerHTML = '<input type="checkbox" /> ' + text;
-  todo.className = 'list-group-item';
-  
-  document.querySelector('.todo-list').appendChild(todo);
+  var todoHtml = '<li><input type="checkbox" />' + text + '</li>';
+  $(todoHtml).appendTo('.todo-list');
 }
 
 function keyPressHandler(event) {
@@ -13,9 +17,7 @@ function keyPressHandler(event) {
   this.value = '';
 }
 
-function initialize() {
-  var todoInput = document.querySelector('#todo-input');
-  todoInput.addEventListener('keypress', keyPressHandler, false);
-}
-
-window.onload = initialize;
+$(function() {
+  $('#todo-input').on('keypress', keyPressHandler);
+  $(document).on('change', '.todo-list li :checkbox', taskCheckHanlder);
+});
