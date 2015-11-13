@@ -57,4 +57,10 @@ footer {
 .todo-list li:hover {
   background: #efefef;
 }
+
+.action-remove {
+  float: right;
+  color: #888;
+  text-decoration: none;
+  margin-right: 5px;
 }

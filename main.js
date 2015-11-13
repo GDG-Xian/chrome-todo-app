@@ -10,8 +10,18 @@ function clearDoneTasks() {
 }
 
 function createTodo(text) {
-  var todoHtml = '<li><input type="checkbox" />' + text + '</li>';
+  var todoHtml = ''
+    + '<li>'
+    + '  <a href="###" class="action-remove">&times;</a>'
+    + '  <input type="checkbox" />' + text
+    + '</li>';
   $(todoHtml).appendTo('.todo-list');
+}
+
+function removeTodo() {
+  $(this).parents('li').fadeOut(function() {
+    $(this).remove();
+  });
 }
 
 function keyPressHandler(event) {
@@ -24,5 +34,6 @@ function keyPressHandler(event) {
 $(function() {
   $('#todo-input').on('keypress', keyPressHandler);
   $(document).on('change', '.todo-list li :checkbox', taskCheckHanlder);
+  $(document).on('click', '.action-remove', removeTodo);
   $('#action-clean-done').on('click', clearDoneTasks);
 });
