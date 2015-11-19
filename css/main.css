@@ -1,5 +1,5 @@
 /* CSS file placeholder. */
-body {
+/*body {
   font-size: 14px;
 }
 
@@ -52,15 +52,12 @@ footer {
 .todo-list li {
   border-bottom: 1px solid #eee;
   padding: 5px;
-}
+}*/
 
-.todo-list li.done {
+
+.done {
   text-decoration: line-through;
   color: #888888;
-}
-
-.todo-list li:hover {
-  background: #efefef;
 }
 
 .action-remove {
@@ -69,3 +66,10 @@ footer {
   text-decoration: none;
   margin-right: 5px;
 }
+
+/*
+.todo-list li:hover {
+  background: #efefef;
+}
+
+}*/
