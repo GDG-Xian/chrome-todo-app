@@ -16,12 +16,16 @@ function clearDoneTodos() {
 }
 
 function addTodoElement(todo) {
+  var $list = $('.todo-list');
+  var $content = $('.content');
   var todoHtml = ''
     + '<li class="todo">'
     + '  <a href="###" class="action-remove">删除</a>'
     + '  <input type="checkbox" />' + todo.title
     + '</li>';
-  $(todoHtml).appendTo('.todo-list');
+
+  $list.append(todoHtml);
+  $content.stop().animate({ scrollTop: $list.prop('scrollHeight') }, 300);
 }
 
 function saveTodo(title, callback) {
