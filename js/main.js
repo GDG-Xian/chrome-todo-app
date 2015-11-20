@@ -41,8 +41,9 @@ function removeTodoHandler() {
 }
 
 function removeTodo($todo) {
-  $todo.remove();
+  $todo.fadeOut($todo.remove);
 }
+
   // chrome.storage.local.remove($todo.attr('id'), function() {
   //   $todo.remove();
   // }); 

@@ -1,5 +1,4 @@
-/* CSS file placeholder. */
-/*body {
+body {
   font-size: 14px;
 }
 
@@ -23,17 +22,6 @@ header {
   box-sizing: border-box;
 }
 
-footer {
-  height: 40px;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  text-align: center;
-  line-height: 40px;
-  background: #efefef;
-}
-
 .content {
   position: absolute;
   top: 50px;
@@ -49,11 +37,10 @@ footer {
   padding: 0;
 }
 
-.todo-list li {
+.todo {
   border-bottom: 1px solid #eee;
   padding: 5px;
-}*/
-
+}
 
 .done {
   text-decoration: line-through;
@@ -61,15 +48,28 @@ footer {
 }
 
 .action-remove {
+  display: none;
   float: right;
   color: #888;
   text-decoration: none;
   margin-right: 5px;
 }
 
-/*
-.todo-list li:hover {
-  background: #efefef;
+.todo:hover {
+  background-color: #F9F9F9;
 }
 
-}*/
+.todo:hover .action-remove {
+  display: block;
+}
+
+footer {
+  height: 40px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+  line-height: 40px;
+  background: #efefef;
+}
