@@ -1,6 +1,14 @@
+function toggleTodo(todoId, done) {
+  chrome.storage.local.get(todoId, function(result) {
+    result[todoId]['done'] = done;
+    chrome.storage.local.set(result);
+  });
+}
+
 function todoCheckHanlder() {
   var $todo = $(this).parent();
-  $todo.toggleClass('done', this.checked);
+  $todo.toggleClass('checked', this.checked);
+  toggleTodo($todo.attr('id'), this.checked);
 }
 
   // chrome.storage.local.get($todo.attr('id'), function(result) {
@@ -16,16 +24,20 @@ function clearDoneTodos() {
 }
 
 function addTodoElement(todo) {
+  var checked = todo.done ? 'checked' : '';
+
   var $list = $('.todo-list');
   var $content = $('.content');
   var todoHtml = ''
-    + '<li class="todo">'
+    + '<li class="todo ' + checked + '" id="' + todo.id + '">'
     + '  <a href="###" class="action-remove">删除</a>'
-    + '  <input type="checkbox" />' + todo.title
+    + '  <input type="checkbox" ' + checked + ' />' + todo.title
     + '</li>';
 
   $list.append(todoHtml);
-  $content.stop().animate({ scrollTop: $list.prop('scrollHeight') }, 300);
+  $content.stop().animate({
+    scrollTop: $list.prop('scrollHeight')
+  }, 300);
 }
 
 function saveTodo(title, callback) {
@@ -35,9 +47,7 @@ function saveTodo(title, callback) {
   var record = {};
   record[todo.id] = todo;
 
-  chrome.storage.local.set(record, function() {
-    
-  });
+  chrome.storage.local.set(record);
 }
 
 function removeTodoHandler() {
@@ -46,16 +56,30 @@ function removeTodoHandler() {
 
 function removeTodo($todo) {
   $todo.fadeOut($todo.remove);
+  chrome.storage.local.remove($todo.attr('id'), function() {
+    $todo.remove();
+  });
 }
 
-  // chrome.storage.local.remove($todo.attr('id'), function() {
-  //   $todo.remove();
-  // }); 
+function saveTodo(todo) {
+  var object = {};
+  object[todo.id] = todo;
+
+  chrome.storage.local.set(object);
+}
 
 function addTodoHandler(event) {
   if (event.keyCode != 13) return;
 
-  addTodoElement({ title: this.value, done: false });
+  var todo = {
+    id: 'todo-' + new Date().getTime(),
+    title: this.value,
+    done: false
+  };
+
+  saveTodo(todo);
+  addTodoElement(todo);
+  
   this.value = '';
 }
 

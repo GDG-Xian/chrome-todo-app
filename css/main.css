@@ -42,7 +42,7 @@ header {
   padding: 5px;
 }
 
-.done {
+.checked {
   text-decoration: line-through;
   color: #888888;
 }
