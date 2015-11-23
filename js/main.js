@@ -18,7 +18,7 @@ function todoCheckHanlder() {
   // });
 
 function clearDoneTodos() {
-  $('.todo.done').each(function() {
+  $('.todo.checked').each(function() {
     removeTodo($(this));
   });
 }
